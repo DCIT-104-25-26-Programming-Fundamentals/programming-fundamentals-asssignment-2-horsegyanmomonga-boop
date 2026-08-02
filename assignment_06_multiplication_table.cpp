@@ -57,3 +57,60 @@
 #include <iostream>
 using namespace std;
 
+// Function Prototypes
+void printTable(int num);
+void printTablesUpToN(int n);
+
+int main() {
+    int userNum;
+
+    cout << "=== Multiplication Table Generator ===" << endl;
+    cout << "Enter a positive integer: ";
+    cin >> userNum;
+
+    // Input Validation
+    if (cin.fail() || userNum <= 0) {
+        cout << "\nError: Invalid input! Please enter a positive integer." << endl;
+        return 1;
+    }
+
+    cout << "\n=======================================" << endl;
+    cout << "               PART A                  " << endl;
+    cout << "=======================================" << endl;
+    printTable(userNum);
+
+    cout << "\n=======================================" << endl;
+    cout << "          PART B (Bonus)               " << endl;
+    cout << "=======================================" << endl;
+    printTablesUpToN(userNum);
+
+    return 0;
+}
+
+// -----------------------------------------------------------------------------
+// PART A — Prints the multiplication table (1 to 12) for a single number
+// -----------------------------------------------------------------------------
+void printTable(int num) {
+    cout << "\nMultiplication Table for " << num << ":\n";
+    for (int i = 1; i <= 12; i++) {
+        cout << num << "  x  " << i;
+        
+        // Formatting space alignment for double digits
+        if (i < 10) cout << " ";
+        
+        cout << "  =  " << num * i << "\n";
+    }
+}
+
+// -----------------------------------------------------------------------------
+// PART B — Prints multiplication tables from 1 up to N
+// -----------------------------------------------------------------------------
+void printTablesUpToN(int n) {
+    for (int i = 1; i <= n; i++) {
+        printTable(i);
+        if (i < n) {
+            cout << "---------------------------" << endl;
+        }
+    }
+}
+
